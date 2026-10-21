@@ -1,0 +1,1076 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kilimanjaro Hillside Resort — Website design</title>
+<meta name="description" content="Website design direction for Kilimanjaro Hillside Resort, Kimana, Kenya" />
+<style>
+  @font-face{
+    font-family:'Fraunces';
+    src:url('fonts/fraunces.ttf') format('truetype');
+    font-weight:100 900;
+    font-style:normal;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Fraunces';
+    src:url('fonts/fraunces-italic.ttf') format('truetype');
+    font-weight:100 900;
+    font-style:italic;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Work Sans';
+    src:url('fonts/worksans.ttf') format('truetype');
+    font-weight:100 900;
+    font-style:normal;
+    font-display:swap;
+  }
+
+  :root{
+    --cream:#F6EFE3;
+    --cream-dim:#EEE4D2;
+    --charcoal:#241F1A;
+    --charcoal-soft:#5A5047;
+    --rust:#B4502A;
+    --rust-deep:#8A3A1C;
+    --teal:#1F6E68;
+    --teal-deep:#154E4A;
+    --mustard:#D98F2B;
+    --rule:#DDD0BC;
+    --font-display:'Fraunces',Georgia,'Noto Serif',serif;
+    --font-body:'Work Sans','Segoe UI','Helvetica Neue',Arial,sans-serif;
+    --container:1180px;
+
+    --sp-1:0.5rem;
+    --sp-2:0.75rem;
+    --sp-3:1rem;
+    --sp-4:1.5rem;
+    --sp-5:2rem;
+    --sp-6:2.5rem;
+    --sp-7:3rem;
+    --sp-8:4rem;
+    --sp-9:5.5rem;
+    --sp-10:7rem;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.lock{overflow:hidden;}
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:420;
+    color:var(--charcoal);
+    margin:0;
+    text-wrap:balance;
+    font-optical-sizing:auto;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  ul{margin:0;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--rust);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:0.001ms !important;animation-duration:0.001ms !important;}
+  }
+
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 var(--sp-5);}
+  @media (max-width:640px){.wrap{padding:0 var(--sp-4);}}
+
+  .label{
+    font-family:var(--font-body);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rust);
+    font-weight:600;
+  }
+  .label.on-dark{color:var(--mustard);}
+
+  /* ---------- scroll reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- header (sticky) ---------- */
+  .site-header{
+    position:sticky;
+    top:0;
+    border-bottom:1px solid var(--rule);
+    background:var(--cream);
+    z-index:30;
+    transition:box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .site-header.scrolled{
+    box-shadow:0 1px 0 rgba(36,31,26,0.1);
+    border-bottom-color:transparent;
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:var(--sp-4) 0;
+    gap:var(--sp-5);
+  }
+  .wordmark{display:flex;align-items:center;}
+  .wordmark img{height:52px;width:auto;}
+  nav.primary-nav ul{
+    list-style:none;
+    display:flex;
+    gap:var(--sp-5);
+    margin:0;
+    padding:0;
+  }
+  nav.primary-nav a{
+    font-size:0.88rem;
+    color:var(--charcoal-soft);
+    padding-bottom:3px;
+    border-bottom:1px solid transparent;
+  }
+  nav.primary-nav a:hover{color:var(--rust);border-bottom-color:var(--rust);}
+  nav.primary-nav a[aria-current="page"]{color:var(--rust);border-bottom-color:var(--rust);}
+  .nav-right{display:flex;align-items:center;gap:var(--sp-4);}
+
+  .btn{
+    display:inline-block;
+    font-size:0.85rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    padding:0.72rem var(--sp-4);
+    border:1px solid var(--rust);
+    color:var(--rust);
+    background:transparent;
+    white-space:nowrap;
+    cursor:pointer;
+  }
+  .btn:hover{background:var(--rust);color:var(--cream);}
+  .btn-solid{background:var(--rust);color:var(--cream);border-color:var(--rust);}
+  .btn-solid:hover{background:var(--rust-deep);border-color:var(--rust-deep);}
+  .btn-cream{border-color:var(--cream);color:var(--cream);}
+  .btn-cream:hover{background:var(--cream);color:var(--rust-deep);}
+
+  /* ---------- mobile nav: left-hand drawer ---------- */
+  .hamburger-btn{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:40px;height:40px;
+    background:transparent;
+    border:1px solid var(--rule);
+    padding:0;
+    align-items:center;
+  }
+  .hamburger-btn .bar{display:block;width:18px;height:1px;background:var(--charcoal);}
+
+  .drawer-scrim{
+    position:fixed;inset:0;
+    background:rgba(36,31,26,0.5);
+    opacity:0;pointer-events:none;
+    transition:opacity 0.25s ease;
+    z-index:40;
+  }
+  .drawer-scrim.open{opacity:1;pointer-events:auto;}
+
+  .mobile-drawer{
+    position:fixed;top:0;left:0;
+    height:100%;
+    width:min(320px,84vw);
+    background:var(--cream);
+    border-right:1px solid var(--rule);
+    transform:translateX(-100%);
+    transition:transform 0.3s ease;
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    padding:var(--sp-4) var(--sp-5) var(--sp-5);
+  }
+  .mobile-drawer.open{transform:translateX(0);}
+  .drawer-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-bottom:var(--sp-4);
+    border-bottom:1px solid var(--rule);
+  }
+  .drawer-head img{height:38px;width:auto;}
+  .drawer-close{
+    background:none;border:none;color:var(--rust);
+    font-size:1.6rem;line-height:1;padding:0.25rem;cursor:pointer;
+  }
+  .drawer-list{list-style:none;margin:var(--sp-4) 0 0;padding:0;}
+  .drawer-list li{border-bottom:1px solid var(--rule);}
+  .drawer-list a{display:block;padding:var(--sp-3) 0.1rem;font-size:1.05rem;color:var(--charcoal);}
+  .drawer-list a[aria-current="page"]{color:var(--rust);font-weight:600;}
+  .drawer-cta{margin-top:auto;width:100%;text-align:center;}
+
+  @media (max-width:880px){
+    nav.primary-nav{display:none;}
+    .nav-right .btn{display:none;}
+    .hamburger-btn{display:flex;}
+  }
+
+  /* ---------- floating WhatsApp ---------- */
+  .whatsapp-float{
+    position:fixed;
+    right:var(--sp-4);
+    bottom:var(--sp-4);
+    width:52px;height:52px;
+    border-radius:50%;
+    background:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 10px rgba(36,31,26,0.3);
+    z-index:35;
+  }
+  .whatsapp-float:hover{background:var(--teal-deep);}
+  .whatsapp-float svg{width:24px;height:24px;}
+
+  /* ---------- photo figure ---------- */
+  .ph{
+    position:relative;
+    background:var(--cream-dim);
+    min-height:260px;
+    overflow:hidden;
+  }
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .ph .credit{
+    position:absolute;
+    left:var(--sp-2);
+    bottom:var(--sp-2);
+    z-index:1;
+    background:rgba(36,31,26,0.82);
+    color:var(--cream);
+    font-size:0.62rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:0.35rem 0.6rem;
+    max-width:calc(100% - 1.7rem);
+  }
+  .ph.square{min-height:0;aspect-ratio:4/3;}
+  .ph.flow{min-height:0;}
+  .ph.flow img{position:static;width:100%;height:auto;}
+
+  /* ---------- hero (layered/collage) ---------- */
+  .hero{
+    position:relative;
+    min-height:86vh;
+    background:var(--cream-dim);
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img.media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero-scrim{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(20,14,10,0.9) 0%, rgba(20,14,10,0.6) 34%, rgba(20,14,10,0.3) 60%, rgba(20,14,10,0.15) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:1;
+    padding:var(--sp-8) 0 var(--sp-9);
+    width:100%;
+  }
+  .hero-chip{
+    display:inline-block;
+    background:var(--rust);
+    color:var(--cream);
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:0.4rem 0.8rem;
+    margin-bottom:var(--sp-4);
+  }
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.8rem,6.4vw,5.2rem);
+    line-height:0.98;
+    max-width:14ch;
+    font-weight:380;
+    font-variation-settings:"SOFT" 40, "WONK" 1;
+  }
+  .hero .sub{
+    color:var(--cream);
+    opacity:0.92;
+    font-size:1.08rem;
+    max-width:44ch;
+    margin:var(--sp-5) 0 var(--sp-5);
+  }
+  .hero-actions{display:flex;gap:var(--sp-3);flex-wrap:wrap;align-items:center;}
+  .text-link{font-size:0.9rem;color:var(--cream);border-bottom:1px solid rgba(246,239,227,0.5);padding-bottom:2px;}
+  .text-link:hover{border-color:var(--cream);}
+  .text-link.dark{color:var(--rust);border-color:var(--rust);}
+  .hero-caption{
+    position:relative;z-index:1;
+    padding:0 0 var(--sp-4);
+    font-size:0.7rem;letter-spacing:0.08em;color:var(--cream);opacity:0.8;
+  }
+  .hero-inset{
+    position:absolute;
+    right:var(--sp-5);
+    top:var(--sp-6);
+    z-index:1;
+    width:min(220px,26vw);
+    aspect-ratio:4/5;
+    border:5px solid var(--cream);
+    box-shadow:0 10px 28px rgba(20,14,10,0.35);
+    transform:rotate(3deg);
+    overflow:hidden;
+  }
+  .hero-inset img{width:100%;height:100%;object-fit:cover;display:block;}
+  @media (max-width:760px){.hero-inset{display:none;}}
+
+  /* ---------- page header (non-home pages) ---------- */
+  .page-head{
+    padding:var(--sp-8) 0 var(--sp-6);
+    border-bottom:1px solid var(--rule);
+    margin-bottom:var(--sp-8);
+  }
+  .page-head h1{font-size:clamp(2.3rem,4.4vw,3.4rem);margin-bottom:var(--sp-2);font-style:italic;font-weight:380;}
+  .page-head .dek{color:var(--charcoal-soft);max-width:60ch;font-size:1.05rem;}
+
+  /* ---------- section rhythm ---------- */
+  section{padding:var(--sp-9) 0;}
+  .page > section:first-of-type{padding-top:0;}
+  .rule{border:none;border-top:1px solid var(--rule);margin:0;}
+
+  .intro-grid{
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:var(--sp-8);
+    align-items:center;
+  }
+  .intro-grid.wide{grid-template-columns:0.85fr 1.25fr;}
+  .intro-grid h2{font-size:clamp(2rem,3.4vw,2.8rem);margin-bottom:var(--sp-4);font-style:italic;font-weight:380;}
+  .intro-grid p{color:var(--charcoal-soft);font-size:1.05rem;max-width:52ch;}
+  .intro-grid .ph{min-height:380px;}
+
+  .editorial-row{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:var(--sp-8);
+    align-items:center;
+  }
+  .editorial-row.reverse{grid-template-columns:1.2fr 1fr;}
+  .editorial-row.reverse .ph{order:2;}
+  .editorial-row .ph{min-height:420px;}
+  .editorial-copy .label{margin-bottom:var(--sp-2);display:block;}
+  .editorial-copy h2{font-size:clamp(1.8rem,2.8vw,2.4rem);margin-bottom:var(--sp-3);}
+  .editorial-copy p{color:var(--charcoal-soft);max-width:48ch;margin-bottom:var(--sp-2);}
+  .editorial-copy .note{
+    font-size:0.85rem;
+    color:var(--charcoal-soft);
+    border-left:2px solid var(--mustard);
+    padding-left:var(--sp-2);
+    margin:var(--sp-4) 0 var(--sp-5);
+    max-width:44ch;
+  }
+  .tag-list{list-style:none;margin:var(--sp-3) 0 var(--sp-4);padding:0;display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .tag-list li{
+    font-size:0.78rem;
+    border:1px solid var(--rule);
+    padding:0.3rem 0.7rem;
+    color:var(--charcoal-soft);
+  }
+
+  .support-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-top:var(--sp-5);}
+  .support-row .ph{min-height:220px;}
+
+  /* ---------- pull-quote band ---------- */
+  .quote-band{
+    background:var(--rust);
+    color:var(--cream);
+    padding:var(--sp-9) 0;
+    text-align:center;
+  }
+  .quote-band blockquote{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-weight:380;
+    font-size:clamp(1.8rem,4vw,3rem);
+    line-height:1.25;
+    max-width:18ch;
+    margin:0 auto var(--sp-4);
+    color:var(--cream);
+  }
+  .quote-band cite{font-style:normal;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mustard);}
+
+  .setting-band{
+    position:relative;
+    color:var(--cream);
+    padding:var(--sp-10) 0;
+    overflow:hidden;
+  }
+  .setting-band img.media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .setting-band .scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(100deg, rgba(21,78,74,0.93) 0%, rgba(21,78,74,0.8) 38%, rgba(21,78,74,0.5) 72%, rgba(21,78,74,0.3) 100%);
+  }
+  .setting-inner{position:relative;z-index:1;max-width:46ch;}
+  .setting-inner h2{color:var(--cream);font-size:clamp(1.9rem,3vw,2.4rem);margin-bottom:var(--sp-4);font-style:italic;font-weight:380;}
+  .setting-inner p{color:var(--cream);opacity:0.92;}
+  .setting-band .credit{
+    position:relative;z-index:1;
+    display:inline-block;
+    margin-top:var(--sp-4);
+    font-size:0.65rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--mustard);
+    opacity:0.9;
+  }
+
+  .gallery-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--sp-6);gap:var(--sp-3);flex-wrap:wrap;}
+  .gallery-head h2{font-size:clamp(1.8rem,2.8vw,2.4rem);font-style:italic;font-weight:380;}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    grid-auto-rows:140px;
+    gap:var(--sp-2);
+  }
+  .gallery-grid .ph{min-height:0;}
+  .g1{grid-column:span 3;grid-row:span 2;}
+  .g2{grid-column:span 3;grid-row:span 1;}
+  .g3{grid-column:span 2;grid-row:span 1;}
+  .g4{grid-column:span 2;grid-row:span 1;}
+  .g5{grid-column:span 2;grid-row:span 1;}
+  @media (max-width:760px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+    .g1,.g2,.g3,.g4,.g5{grid-column:span 2;grid-row:span 1;}
+  }
+
+  .masonry{columns:4 220px;column-gap:var(--sp-3);}
+  .masonry .ph{break-inside:avoid;margin-bottom:var(--sp-3);}
+  @media (max-width:640px){.masonry{columns:2 160px;}}
+
+  .contact-band{
+    border-top:1px solid var(--rule);
+    padding:var(--sp-9) 0;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:var(--sp-8);
+  }
+  .contact-grid h2{font-size:clamp(1.9rem,3vw,2.4rem);margin-bottom:var(--sp-4);font-style:italic;font-weight:380;}
+  .contact-list{list-style:none;margin:0 0 var(--sp-5);padding:0;display:flex;flex-direction:column;gap:var(--sp-2);}
+  .contact-list .k{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);display:block;margin-bottom:0.15rem;}
+  .contact-list .v{font-size:1.02rem;color:var(--charcoal);}
+  .contact-list a.v:hover{color:var(--rust);}
+  .enquire-box{
+    background:var(--cream-dim);
+    padding:var(--sp-5);
+    border:1px solid var(--rule);
+  }
+  .enquire-box p{color:var(--charcoal-soft);margin-bottom:var(--sp-4);max-width:40ch;}
+  .map-frame{border:1px solid var(--rule);margin-top:var(--sp-5);max-width:480px;}
+  .map-frame iframe{width:100%;height:260px;display:block;border:0;filter:sepia(0.12) saturate(1.05);}
+
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-bottom:var(--sp-3);}
+  .form-grid .full{grid-column:1 / -1;}
+  .field{display:flex;flex-direction:column;gap:0.4rem;}
+  .field label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--rust);}
+  .field input, .field textarea{
+    font-family:var(--font-body);
+    font-size:0.95rem;
+    padding:0.65rem var(--sp-2);
+    border:1px solid var(--rule);
+    background:var(--cream);
+    color:var(--charcoal);
+  }
+  .field input:focus, .field textarea:focus{outline:2px solid var(--rust);outline-offset:1px;}
+  .field textarea{resize:vertical;min-height:90px;}
+
+  footer{border-top:1px solid var(--rule);padding:var(--sp-7) 0 var(--sp-6);}
+  .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--sp-5);}
+  .footer-brand{display:flex;align-items:center;gap:var(--sp-3);}
+  .footer-brand img{height:40px;width:auto;}
+  .footer-meta{font-size:0.82rem;color:var(--charcoal-soft);display:flex;flex-direction:column;gap:0.3rem;}
+  .footer-links ul{list-style:none;margin:0;padding:0;display:flex;gap:var(--sp-4);flex-wrap:wrap;}
+  .footer-links a{font-size:0.85rem;color:var(--charcoal-soft);}
+  .footer-links a:hover{color:var(--rust);}
+  .footer-bottom{margin-top:var(--sp-6);font-size:0.78rem;color:var(--charcoal-soft);opacity:0.8;}
+
+  @media (max-width:880px){
+    .intro-grid,.intro-grid.wide,.editorial-row,.editorial-row.reverse,.setting-inner,.contact-grid,.form-grid,.support-row{grid-template-columns:1fr;gap:var(--sp-5);}
+    .editorial-row.reverse .ph{order:0;}
+    section{padding:var(--sp-7) 0;}
+    .page-head{padding:var(--sp-6) 0 var(--sp-5);margin-bottom:var(--sp-7);}
+  }
+
+  /* ---------- page routing ---------- */
+  .page{display:none;}
+  .page.active{display:block;}
+</style>
+
+<header class="site-header" id="site-header">
+  <div class="wrap nav-inner">
+    <a href="#/" class="wordmark" data-route="home" aria-label="Kilimanjaro Hillside Resort, home">
+      <img src="images/logo.png" alt="Kilimanjaro Hillside Resort" />
+    </a>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#/" data-route="home">Home</a></li>
+        <li><a href="#/about" data-route="about">About</a></li>
+        <li><a href="#/accommodation" data-route="accommodation">Accommodation</a></li>
+        <li><a href="#/facilities" data-route="facilities">Facilities &amp; experiences</a></li>
+        <li><a href="#/gallery" data-route="gallery">Gallery</a></li>
+        <li><a href="#/contact" data-route="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a href="#/contact" class="btn">Enquire</a>
+      <button id="drawer-btn" class="hamburger-btn" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Open menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="drawer-scrim" class="drawer-scrim"></div>
+<aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Site menu">
+  <div class="drawer-head">
+    <img src="images/logo.png" alt="Kilimanjaro Hillside Resort" />
+    <button id="drawer-close" class="drawer-close" aria-label="Close menu">&times;</button>
+  </div>
+  <nav aria-label="Mobile">
+    <ul class="drawer-list">
+      <li><a href="#/" data-route="home">Home</a></li>
+      <li><a href="#/about" data-route="about">About</a></li>
+      <li><a href="#/accommodation" data-route="accommodation">Accommodation</a></li>
+      <li><a href="#/facilities" data-route="facilities">Facilities &amp; experiences</a></li>
+      <li><a href="#/gallery" data-route="gallery">Gallery</a></li>
+      <li><a href="#/contact" data-route="contact">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="#/contact" class="btn btn-solid drawer-cta">Enquire</a>
+</aside>
+
+<a class="whatsapp-float" href="https://wa.me/254727612374?text=Hello%2C%20I%20have%20a%20question%20about%20Kilimanjaro%20Hillside%20Resort." aria-label="Chat with us on WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4C9.37 4 4 9.37 4 16c0 2.18.59 4.22 1.6 5.98L4 28l6.2-1.58A11.9 11.9 0 0 0 16 28c6.63 0 12-5.37 12-12S22.63 4 16 4Z" fill="#F6EFE3"/><path d="M16 5.5c5.8 0 10.5 4.7 10.5 10.5S21.8 26.5 16 26.5c-1.9 0-3.68-.5-5.22-1.38l-.37-.21-3.68.94.98-3.58-.24-.37A10.44 10.44 0 0 1 5.5 16C5.5 10.2 10.2 5.5 16 5.5Z" fill="#1F6E68"/><path d="M12.3 10.6c-.24-.53-.5-.54-.73-.55h-.62c-.22 0-.57.08-.87.4-.3.33-1.14 1.11-1.14 2.72s1.17 3.16 1.33 3.38c.17.22 2.27 3.63 5.6 4.95 2.77 1.1 3.33.88 3.93.82.6-.06 1.93-.78 2.2-1.54.27-.76.27-1.4.19-1.54-.08-.14-.3-.22-.63-.38-.33-.17-1.93-.95-2.23-1.06-.3-.11-.52-.17-.74.17-.22.33-.85 1.06-1.04 1.28-.19.22-.38.25-.71.08-.33-.17-1.4-.51-2.66-1.63-.98-.87-1.64-1.95-1.83-2.28-.19-.33-.02-.5.15-.67.15-.15.33-.38.5-.58.17-.19.22-.33.33-.55.11-.22.06-.42-.03-.58-.08-.17-.72-1.8-1-2.44Z" fill="#F6EFE3"/></svg>
+</a>
+
+<main>
+
+  <!-- ============ HOME ============ -->
+  <div class="page" id="page-home" data-page="home">
+
+    <section class="hero" aria-label="Introduction">
+      <img class="media" src="images/real-lounge-wide.jpg" alt="" />
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-inset">
+        <img src="images/real-grill-1.jpg" alt="" />
+      </div>
+      <div class="hero-content wrap">
+        <span class="hero-chip">Kimana &middot; gateway to Amboseli &amp; Kilimanjaro</span>
+        <h1>A table set in the shadow of Kilimanjaro</h1>
+        <p class="sub">Nyama choma, cold drinks and a quiet room — a place to slow down in Kimana, Kajiado County, on the corridor between Amboseli National Park and Mount Kilimanjaro.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/254727612374?text=Hello%2C%20I%27d%20like%20to%20order%20or%20ask%20a%20question." class="btn btn-cream" target="_blank" rel="noopener">Order on WhatsApp</a>
+          <a href="#/accommodation" class="text-link">See rooms &rarr;</a>
+        </div>
+      </div>
+      <p class="hero-caption wrap">Real photographs — the covered lounge and the grill, from the resort's own website</p>
+    </section>
+
+    <section aria-label="Welcome">
+      <div class="wrap intro-grid reveal">
+        <div>
+          <span class="label" style="display:block;margin-bottom:var(--sp-3);">Welcome</span>
+          <h2>A place to slow down in Kimana</h2>
+          <p>Good food roasted over charcoal, a cold drink from the bar, and a quiet room for the night. Kilimanjaro Hillside Resort sits in Kimana, Kajiado County — a good stop for a long lunch after a game drive, a weekend with family, or an evening with friends.</p>
+        </div>
+        <div class="ph">
+          <img src="images/real-garden.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="Accommodation">
+      <div class="wrap editorial-row reveal">
+        <div class="ph">
+          <img src="images/real-room-double.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+        <div class="editorial-copy">
+          <span class="label">Accommodation</span>
+          <h2>Simple, colourful rooms</h2>
+          <p>Two room types, each with its own character — a Double room with bright walls and a garden outlook, and a Comfort double with a carved headboard and lace canopy. Ask for current pricing.</p>
+          <a href="#/accommodation" class="btn">View accommodation</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="Facilities and experiences">
+      <div class="wrap editorial-row reverse reveal">
+        <div class="editorial-copy">
+          <span class="label">Facilities &amp; experiences</span>
+          <h2>Nyama choma, cooked outdoors</h2>
+          <p>Meat is roasted slowly over charcoal and turned by hand, served with ugali, kachumbari and sukuma wiki. A full bar and a covered lounge make it an easy place to stay for a while.</p>
+          <a href="#/facilities" class="btn">View facilities &amp; experiences</a>
+        </div>
+        <div class="ph">
+          <img src="images/real-grill-2.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-band" aria-label="In their own words">
+      <div class="wrap reveal">
+        <blockquote>&ldquo;Nothing rushed, nothing fussy.&rdquo;</blockquote>
+        <cite>From the resort's own description of itself</cite>
+      </div>
+    </section>
+
+    <section class="setting-band" aria-label="Setting">
+      <img class="media" src="images/setting.jpg" alt="" />
+      <div class="scrim" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="setting-inner reveal">
+          <span class="label on-dark" style="display:block;margin-bottom:var(--sp-3);">The setting</span>
+          <h2>Kimana, Kajiado County</h2>
+          <p>Kilimanjaro Hillside Resort is located in Kimana, on the savannah corridor between Amboseli National Park and Mount Kilimanjaro — one of East Africa's best-known views of the mountain.</p>
+          <span class="credit">Stock photo — Pexels, not the resort</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Gallery preview">
+      <div class="wrap reveal">
+        <div class="gallery-head">
+          <h2>Gallery</h2>
+          <a href="#/gallery" class="text-link dark">View full gallery &rarr;</a>
+        </div>
+        <div class="gallery-grid">
+          <div class="ph g1"><img src="images/real-lounge-indoor.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+          <div class="ph g2"><img src="images/real-bar.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+          <div class="ph g3"><img src="images/real-fish.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+          <div class="ph g4"><img src="images/real-room-comfort.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+          <div class="ph g5"><img src="images/gallery-4.jpg" alt="" /><span class="credit">Stock — Pexels</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band" aria-label="Contact and reservations">
+      <div class="wrap contact-grid reveal">
+        <div>
+          <span class="label" style="display:block;margin-bottom:var(--sp-3);">Contact &amp; reservations</span>
+          <h2>Plan your stay</h2>
+          <ul class="contact-list">
+            <li><span class="k">WhatsApp</span><a class="v" href="https://wa.me/254727612374" target="_blank" rel="noopener">0727 612 374</a></li>
+            <li><span class="k">Location</span><span class="v">Kimana, Kajiado County, Kenya</span></li>
+            <li><span class="k">Hours</span><span class="v">Always open</span></li>
+          </ul>
+        </div>
+        <div class="enquire-box">
+          <h3 style="font-size:1.3rem;margin-bottom:var(--sp-2);font-style:italic;font-weight:420;">Send an enquiry</h3>
+          <p>Use the full contact page for dates, party size and any questions about your stay.</p>
+          <a href="#/contact" class="btn btn-solid">Go to enquiries</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <div class="page" id="page-about" data-page="about">
+    <div class="wrap page-head">
+      <span class="label" style="display:block;margin-bottom:var(--sp-2);">About</span>
+      <h1>A table set in the shadow of Kilimanjaro</h1>
+      <p class="dek">Based on the resort's own description of itself, in Kimana, Kajiado County.</p>
+    </div>
+
+    <section aria-label="The fire" style="padding-top:0;">
+      <div class="wrap intro-grid reveal">
+        <div>
+          <span class="label" style="display:block;margin-bottom:var(--sp-3);">The fire</span>
+          <h2>It begins at the grill</h2>
+          <p>Meat is roasted slowly over charcoal and turned by hand until it's ready to share — nyama choma served with ugali, kachumbari and sukuma wiki, the way it's meant to be eaten.</p>
+        </div>
+        <div class="ph">
+          <img src="images/real-grill-1.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="The table">
+      <div class="wrap editorial-row reverse reveal">
+        <div class="editorial-copy">
+          <span class="label">The table</span>
+          <h2>Plates made for sharing</h2>
+          <p>Fried tilapia, beef, fresh greens and soft ugali arrive together, with a cold drink from the bar. Nothing rushed, nothing fussy — a long lunch after a game drive, or an evening with friends.</p>
+        </div>
+        <div class="ph">
+          <img src="images/real-plate-1.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="The stay">
+      <div class="wrap intro-grid reveal">
+        <div>
+          <span class="label" style="display:block;margin-bottom:var(--sp-3);">The stay</span>
+          <h2>Stay a little longer</h2>
+          <p>Settle into the lounge, wander the garden paths, then rest in a room made for quiet. Come for lunch, a weekend with family, or an evening with friends — and stay the night if the mood takes you.</p>
+          <p class="note" style="margin-top:var(--sp-4);">Not yet confirmed: year founded, ownership story, what "Hillside" specifically refers to.</p>
+        </div>
+        <div class="ph">
+          <img src="images/real-room-comfort.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="The setting">
+      <div class="wrap editorial-row reveal">
+        <div class="ph">
+          <img src="images/gallery-3.jpg" alt="" />
+          <span class="credit">Stock photo — Pexels, not the resort</span>
+        </div>
+        <div class="editorial-copy">
+          <span class="label">The setting</span>
+          <h2>Kimana, Kajiado County</h2>
+          <p>The resort sits in Kimana, on the savannah corridor between Amboseli National Park and Mount Kilimanjaro — one of East Africa's most recognisable views of the mountain, and a well-known gateway town for travellers moving between Amboseli and the Tsavo parks.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ ACCOMMODATION ============ -->
+  <div class="page" id="page-accommodation" data-page="accommodation">
+    <div class="wrap page-head">
+      <span class="label" style="display:block;margin-bottom:var(--sp-2);">Accommodation</span>
+      <h1>Rooms &amp; cottages</h1>
+      <p class="dek">Two room types, confirmed from the resort's own website. Pricing isn't published — ask directly and we'll reply with availability.</p>
+    </div>
+
+    <section aria-label="Double room" style="padding-top:0;">
+      <div class="wrap editorial-row reveal">
+        <div class="ph">
+          <img src="images/real-room-double.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+        <div class="editorial-copy">
+          <span class="label">Double room</span>
+          <h2>Wooden bed, bright walls</h2>
+          <p>A wooden bed frame in a brightly painted room with a quiet garden setting — simple and comfortable.</p>
+          <a href="https://wa.me/254727612374?text=Hi%2C%20I%27d%20like%20to%20ask%20about%20the%20Double%20room." class="btn" target="_blank" rel="noopener">Ask about this room</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="Comfort double">
+      <div class="wrap editorial-row reverse reveal">
+        <div class="editorial-copy">
+          <span class="label">Comfort double</span>
+          <h2>Carved headboard, lace canopy</h2>
+          <p>A roomier double with a carved wooden headboard and a lace canopy overhead — a little more detail for a longer stay.</p>
+          <a href="https://wa.me/254727612374?text=Hi%2C%20I%27d%20like%20to%20ask%20about%20the%20Comfort%20double." class="btn" target="_blank" rel="noopener">Ask about this room</a>
+        </div>
+        <div class="ph">
+          <img src="images/real-room-comfort.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ FACILITIES ============ -->
+  <div class="page" id="page-facilities" data-page="facilities">
+    <div class="wrap page-head">
+      <span class="label" style="display:block;margin-bottom:var(--sp-2);">Facilities &amp; experiences</span>
+      <h1>On the grounds</h1>
+      <p class="dek">Dining, the bar and the lounge, confirmed from the resort's own website and Facebook page.</p>
+    </div>
+
+    <section aria-label="Dining" style="padding-top:0;">
+      <div class="wrap editorial-row reveal">
+        <div class="ph">
+          <img src="images/real-grill-1.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+        <div class="editorial-copy">
+          <span class="label">Dining</span>
+          <h2>Nyama choma, cooked outdoors</h2>
+          <p>Meat is roasted slowly over charcoal and turned by hand, served with ugali, kachumbari and sukuma wiki. Fried tilapia is also on offer, plates are made for sharing, and every item is priced on request.</p>
+          <ul class="tag-list">
+            <li>Nyama choma</li>
+            <li>Oven-roasted meat</li>
+            <li>Beef, ugali &amp; sukuma</li>
+            <li>Chips &amp; beef plate</li>
+            <li>Fried tilapia &amp; ugali</li>
+          </ul>
+          <div class="support-row">
+            <div class="ph"><img src="images/real-fish.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+            <div class="ph"><img src="images/real-plate-2.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="The bar">
+      <div class="wrap editorial-row reverse reveal">
+        <div class="editorial-copy">
+          <span class="label">The bar</span>
+          <h2>A fully stocked bar</h2>
+          <p>Spirits, beer and soft drinks, from Tusker and White Cap to Jameson, Amarula and Viceroy brandy — a proper bar, not just a fridge. Must be 18+ to order alcohol.</p>
+          <ul class="tag-list">
+            <li>Tusker</li>
+            <li>White Cap</li>
+            <li>Jameson</li>
+            <li>Amarula Cream</li>
+            <li>Hunter's Choice</li>
+            <li>Viceroy Brandy</li>
+          </ul>
+        </div>
+        <div class="ph">
+          <img src="images/real-bar.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule wrap" />
+
+    <section aria-label="Lounge and grounds">
+      <div class="wrap editorial-row reveal">
+        <div class="ph">
+          <img src="images/real-lounge-wide.jpg" alt="" />
+          <span class="credit">Real photo — resort website</span>
+        </div>
+        <div class="editorial-copy">
+          <span class="label">Lounge &amp; grounds</span>
+          <h2>A covered lounge and garden paths</h2>
+          <p>A covered outdoor lounge with sofas and low tables, a separate indoor sitting room, and garden paths connecting it all — a good spot to rest between game drives into Amboseli.</p>
+          <div class="support-row">
+            <div class="ph"><img src="images/real-lounge-indoor.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+            <div class="ph"><img src="images/real-mosaic-bench.jpg" alt="" /><span class="credit">Real photo — resort website</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ GALLERY ============ -->
+  <div class="page" id="page-gallery" data-page="gallery">
+    <div class="wrap page-head">
+      <span class="label" style="display:block;margin-bottom:var(--sp-2);">Gallery</span>
+      <h1>Gallery</h1>
+      <p class="dek">Real photography from the resort's own website and Facebook page, alongside a few stock landscapes for geographic context. Each image is credited.</p>
+    </div>
+
+    <section aria-label="All photographs" style="padding-top:0;">
+      <div class="wrap masonry reveal">
+        <div class="ph flow"><img src="images/real-lounge-wide.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-bar.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-room-double.jpg" alt="" /><span class="credit">Real — Double room</span></div>
+        <div class="ph flow"><img src="images/real-grill-1.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-lounge-indoor.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-room-comfort.jpg" alt="" /><span class="credit">Real — Comfort double</span></div>
+        <div class="ph flow"><img src="images/real-fish.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-kitchen-staff.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-grill-2.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-garden.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-plate-1.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-mosaic-bench.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-outdoor-table.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-plate-2.jpg" alt="" /><span class="credit">Real — resort website</span></div>
+        <div class="ph flow"><img src="images/real-cover.jpg" alt="" /><span class="credit">Real — Facebook</span></div>
+        <div class="ph flow"><img src="images/gallery-1.jpg" alt="" /><span class="credit">Kajiado County — stock</span></div>
+        <div class="ph flow"><img src="images/setting.jpg" alt="" /><span class="credit">Stock — Pexels</span></div>
+        <div class="ph flow"><img src="images/gallery-3.jpg" alt="" /><span class="credit">Stock — Pexels</span></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <div class="page" id="page-contact" data-page="contact">
+    <div class="wrap page-head">
+      <span class="label" style="display:block;margin-bottom:var(--sp-2);">Contact &amp; reservations</span>
+      <h1>Plan your stay</h1>
+      <p class="dek">WhatsApp is the fastest way to reach us — tap a room or menu item anywhere on the site, or message us directly below.</p>
+    </div>
+
+    <section aria-label="Contact details and enquiry form" style="padding-top:0;">
+      <div class="wrap contact-grid reveal">
+        <div>
+          <ul class="contact-list">
+            <li><span class="k">WhatsApp</span><a class="v" href="https://wa.me/254727612374" target="_blank" rel="noopener">0727 612 374</a></li>
+            <li><span class="k">Call</span><a class="v" href="tel:+254727612374">0727 612 374</a></li>
+            <li><span class="k">Location</span><span class="v">Kimana, Kajiado County, Kenya</span></li>
+            <li><span class="k">Hours</span><span class="v">Always open</span></li>
+            <li><span class="k">Follow</span><a class="v" href="https://www.facebook.com/p/Kilimanjaro-Hillside-Resort-100088844763426/" target="_blank" rel="noopener">Facebook</a></li>
+          </ul>
+          <div class="map-frame">
+            <iframe src="https://www.google.com/maps?q=-2.8152815,37.5542116&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map location of Kilimanjaro Hillside Resort"></iframe>
+          </div>
+          <p style="margin-top:var(--sp-2);"><a href="https://maps.app.goo.gl/GHFSKQ9JYzK5eE3S7" class="text-link dark" target="_blank" rel="noopener">Open in Google Maps &rarr;</a></p>
+        </div>
+        <div class="enquire-box">
+          <h3 style="font-size:1.3rem;margin-bottom:var(--sp-2);font-style:italic;font-weight:420;">Send an enquiry</h3>
+          <p>Draft form — fields are illustrative pending the resort's preferred enquiry process. For a real reply today, use WhatsApp instead.</p>
+          <form onsubmit="return false;">
+            <div class="form-grid">
+              <div class="field"><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name" /></div>
+              <div class="field"><label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel" /></div>
+              <div class="field"><label for="f-checkin">Check-in</label><input id="f-checkin" type="date" /></div>
+              <div class="field"><label for="f-checkout">Check-out</label><input id="f-checkout" type="date" /></div>
+              <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg"></textarea></div>
+            </div>
+            <button type="submit" class="btn btn-solid">Send enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="Kilimanjaro Hillside Resort" />
+        <div class="footer-meta">
+          <span>Kimana, Kajiado County, Kenya</span>
+          <span>0727 612 374</span>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <ul>
+          <li><a href="#/about" data-route="about">About</a></li>
+          <li><a href="#/accommodation" data-route="accommodation">Accommodation</a></li>
+          <li><a href="#/facilities" data-route="facilities">Facilities &amp; experiences</a></li>
+          <li><a href="#/gallery" data-route="gallery">Gallery</a></li>
+          <li><a href="#/contact" data-route="contact">Contact</a></li>
+          <li><a href="https://wa.me/254727612374" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/p/Kilimanjaro-Hillside-Resort-100088844763426/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer-bottom">&copy; 2026 Kilimanjaro Hillside Resort. Design direction draft — not for production use.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-route]'));
+  var titles = {
+    home:'Kilimanjaro Hillside Resort',
+    about:'About — Kilimanjaro Hillside Resort',
+    accommodation:'Accommodation — Kilimanjaro Hillside Resort',
+    facilities:'Facilities & experiences — Kilimanjaro Hillside Resort',
+    gallery:'Gallery — Kilimanjaro Hillside Resort',
+    contact:'Contact & reservations — Kilimanjaro Hillside Resort'
+  };
+
+  function currentRoute(){
+    var raw = location.hash.replace(/^#\/?/, '');
+    return raw || 'home';
+  }
+
+  // ---- mobile drawer (wired up before render(), since render() closes it) ----
+  var drawerBtn = document.getElementById('drawer-btn');
+  var drawerClose = document.getElementById('drawer-close');
+  var drawer = document.getElementById('mobile-drawer');
+  var scrim = document.getElementById('drawer-scrim');
+
+  function openDrawer(){
+    drawer.classList.add('open');
+    scrim.classList.add('open');
+    drawerBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('lock');
+    drawerClose.focus();
+    document.addEventListener('keydown', onKeydown);
+  }
+  function closeDrawer(){
+    if (!drawer.classList.contains('open')) return;
+    drawer.classList.remove('open');
+    scrim.classList.remove('open');
+    drawerBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('lock');
+    document.removeEventListener('keydown', onKeydown);
+  }
+  function onKeydown(e){
+    if (e.key === 'Escape'){ closeDrawer(); drawerBtn.focus(); }
+  }
+
+  drawerBtn.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', function(){ closeDrawer(); drawerBtn.focus(); });
+  scrim.addEventListener('click', function(){ closeDrawer(); drawerBtn.focus(); });
+
+  // ---- scroll reveal ----
+  var revealObserver = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            entry.target.classList.add('in');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 })
+    : null;
+
+  function armReveals(root){
+    var els = root.querySelectorAll('.reveal:not(.in)');
+    els.forEach(function(el){
+      if (revealObserver) revealObserver.observe(el);
+      else el.classList.add('in');
+    });
+  }
+
+  function render(){
+    var route = currentRoute();
+    if (!titles.hasOwnProperty(route)) route = 'home';
+    pages.forEach(function(p){ p.classList.toggle('active', p.dataset.page === route); });
+    navLinks.forEach(function(a){
+      if (a.dataset.route === route) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    document.title = titles[route];
+    window.scrollTo(0, 0);
+    closeDrawer();
+    var active = document.querySelector('.page.active');
+    if (active) armReveals(active);
+  }
+
+  window.addEventListener('hashchange', render);
+  render();
+
+  // ---- sticky header shadow on scroll ----
+  var header = document.getElementById('site-header');
+  function onScroll(){
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body></html>
